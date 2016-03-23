@@ -3,6 +3,7 @@ package wizard;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import wizard.ball.Ball;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -13,8 +14,7 @@ public class BagTest {
     @Test
     public void bag_should_be_able_to_add_a_ball_in_it() throws Exception {
         Bag bag = new Bag(3);
-        Ball ball = new Ball(Color.GREEN);
-        assertEquals(true, bag.addBall(ball));
+        assertEquals(true, bag.put(Ball.createGreenBall()));
     }
 
     @Test
@@ -22,10 +22,10 @@ public class BagTest {
         thrown.expect(RulesAreBrokenException.class);
         thrown.expectMessage("You are not allowed to destroy Balloria");
         Bag bag = new Bag(1);
-        Ball greenBall1 = new Ball(Color.GREEN);
-        Ball greenBall2 = new Ball(Color.GREEN);
-        bag.addBall(greenBall1);
-        bag.addBall(greenBall2);
+        Ball greenBall1 = Ball.createGreenBall();
+        Ball greenBall2 = Ball.createGreenBall();
+        bag.put(greenBall1);
+        bag.put(greenBall2);
 //
     }
 //
@@ -35,15 +35,15 @@ public class BagTest {
         thrown.expectMessage("You are not allowed to destroy Balloria");
         Bag bag = new Bag(12);
 
-        Ball greenBall1 = new Ball(Color.GREEN);
-        Ball greenBall2 = new Ball(Color.GREEN);
-        Ball greenBall3 = new Ball(Color.GREEN);
-        Ball greenBall4 = new Ball(Color.GREEN);
+        Ball greenBall1 = Ball.createGreenBall();
+        Ball greenBall2 = Ball.createGreenBall();
+        Ball greenBall3 = Ball.createGreenBall();
+        Ball greenBall4 = Ball.createGreenBall();
 
-        bag.addBall(greenBall1);
-        bag.addBall(greenBall2);
-        bag.addBall(greenBall3);
-        bag.addBall(greenBall4);
+        bag.put(greenBall1);
+        bag.put(greenBall2);
+        bag.put(greenBall3);
+        bag.put(greenBall4);
 
     }
 
@@ -53,8 +53,8 @@ public class BagTest {
         thrown.expectMessage("You are not allowed to destroy Balloria");
         Bag bag = new Bag(12);
 
-        Ball redBall1 = new Ball(Color.RED);
-        bag.addBall(redBall1);
+        Ball redBall1 = Ball.createRedBall();
+        bag.put(redBall1);
     }
 
     @Test
@@ -63,19 +63,19 @@ public class BagTest {
         thrown.expectMessage("You are not allowed to destroy Balloria");
         Bag bag = new Bag(12);
 
-        bag.addBall(new Ball(Color.GREEN));
+        bag.put(Ball.createGreenBall());
 
-        bag.addBall(new Ball(Color.RED));
-        bag.addBall(new Ball(Color.RED));
+        bag.put(Ball.createRedBall());
+        bag.put(Ball.createRedBall());
     }
 
     @Test
     public void should_allow_to_add_as_many_blue_balls_as_the_size_of_bag() throws Exception {
         Bag bag = new Bag(3);
 
-        bag.addBall(new Ball(Color.BLUE));
-        bag.addBall(new Ball(Color.BLUE));
-        assertEquals(true, bag.addBall(new Ball(Color.BLUE)));
+        bag.put(Ball.createBlueBAll());
+        bag.put(Ball.createBlueBAll());
+        assertEquals(true, bag.put(Ball.createBlueBAll()));
     }
     @Test
     public void it_throw_exception_while_adding_blue_ball_more() throws Exception {
@@ -83,21 +83,21 @@ public class BagTest {
         thrown.expectMessage("You are not allowed to destroy Balloria");
         Bag bag = new Bag(3);
 
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.BLUE));
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createBlueBAll());
     }
     @Test
     public void it_should_allow_to_put_yellow_ball_till_40Percent_of_number_of_the_balls_in_bag() throws Exception {
         Bag bag = new Bag(8);
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.BLUE));
-        bag.addBall(new Ball(Color.BLUE));
-        bag.addBall(new Ball(Color.YELLOW));
-        assertEquals(true, bag.addBall(new Ball(Color.YELLOW)));
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createBlueBAll());
+        bag.put(Ball.createBlueBAll());
+        bag.put(Ball.createYellowBall());
+        assertEquals(true, bag.put(Ball.createYellowBall()));
     }
 
     @Test
@@ -105,26 +105,26 @@ public class BagTest {
         thrown.expect(RulesAreBrokenException.class);
         thrown.expectMessage("You are not allowed to destroy Balloria");
         Bag bag = new Bag(8);
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.YELLOW));
-        bag.addBall(new Ball(Color.YELLOW));
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createYellowBall());
+        bag.put(Ball.createYellowBall());
     }
 
     @Test
     public void should_be_able_to_get_summary_of_balls() throws Exception {
         Bag bag = new Bag(14);
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.BLUE));
-        bag.addBall(new Ball(Color.BLUE));
-        bag.addBall(new Ball(Color.GREEN));
-        bag.addBall(new Ball(Color.BLUE));
-        bag.addBall(new Ball(Color.RED));
-        bag.addBall(new Ball(Color.RED));
-        bag.addBall(new Ball(Color.RED));
-        bag.addBall(new Ball(Color.RED));
-        bag.addBall(new Ball(Color.RED));
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createBlueBAll());
+        bag.put(Ball.createBlueBAll());
+        bag.put(Ball.createGreenBall());
+        bag.put(Ball.createBlueBAll());
+        bag.put(Ball.createRedBall());
+        bag.put(Ball.createRedBall());
+        bag.put(Ball.createRedBall());
+        bag.put(Ball.createRedBall());
+        bag.put(Ball.createRedBall());
 
         String expected = "[2green, 2blue, 1green, 1blue, 5red]";
         assertEquals(expected, bag.getSummary());

@@ -1,10 +1,12 @@
 package wizard;
 
+import wizard.ball.Ball;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
-    * Job Of Bag---
+    * Job Of Bag ---
      it should add a ball in valid condition
  */
 
@@ -21,7 +23,7 @@ public class Bag {
     }
 
 
-    public boolean addBall(Ball ball) throws RulesAreBrokenException {
+    public boolean put(Ball ball) throws RulesAreBrokenException {
         if(!isSafeToAdd(ball))
             throw new RulesAreBrokenException();
         bag.get(ball.getColor()).add(ball);
@@ -79,5 +81,13 @@ public class Bag {
     public String getSummary(){
         status += counter+""+previousColor+"]";
         return status;
+    }
+
+    public int bagSize(){
+        return this.maxSize;
+    }
+
+    private boolean isFull(){
+        return balls.size() > this.maxSize;
     }
 }
