@@ -8,8 +8,8 @@ public class BallCollection {
 
     public int numberOf(Color color) {
         int counter = 0;
-        for (int i = 0; i < balls.size() ; i++) {
-            if(balls.get(i).isOfSameColor(color))
+        for (Ball ball : balls) {
+            if (ball.isOfSameColor(color))
                 counter++;
         }
         return counter;
@@ -19,7 +19,7 @@ public class BallCollection {
         return balls.size();
     }
 
-    public void addBall(Ball ball){
+    public void add(Ball ball){
         balls.add(ball);
     }
 }

@@ -1,4 +1,4 @@
-package wizard;
+package wizard.Exception;
 
 public class RulesAreBrokenException extends Exception {
     public RulesAreBrokenException(){
