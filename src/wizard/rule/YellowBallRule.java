@@ -7,12 +7,10 @@ import wizard.ball.Color;
 
 public class YellowBallRule implements Rule {
 
-    private double yellowBallFactor = 0.4;
-
     @Override
     public boolean isBallAddable(BallCollection balls, Ball ball, int bagSize) throws YellowBallException {
-//        System.out.println((int)Math.floor(balls.numberOfTotalBalls() * this.yellowBallFactor));
-        if(ball.isOfSameColor(Color.YELLOW) && balls.numberOf(Color.YELLOW) >= (int)Math.floor(balls.numberOfTotalBalls() * this.yellowBallFactor))
+        double yellowBallFactor = 0.4;
+        if(ball.isOfSameColor(Color.YELLOW) && balls.numberOf(Color.YELLOW) >= (int)Math.floor(balls.numberOfTotalBalls() * yellowBallFactor))
             throw new YellowBallException();
         return true;
     }

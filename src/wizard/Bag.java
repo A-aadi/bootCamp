@@ -14,14 +14,10 @@ public class Bag {
     private BallCollection balls = new BallCollection();
     private final int bagSize;
     private Rules rules;
-//    private String previousColor = "";
-//    private String status = "";
-//    private int counter = 0;
 
     public Bag(Rules rules, int size) {
         this.rules = rules;
         this.bagSize = size;
-//        this.bag = new HashMap<String, ArrayList<Ball>>();
     }
 
     public int put(Ball ball) throws BagFullException, RedBallException, YellowBallException, BlueBallException, GreenBallException{
@@ -36,14 +32,6 @@ public class Bag {
         return balls.numberOfTotalBalls() >= this.bagSize;
     }
 
-//    public boolean put(Ball ball) throws RulesAreBrokenException {
-//        if(!isSafeToAdd(ball))
-//            throw new RulesAreBrokenException();
-//        bag.get(ball.getColor()).add(ball);
-//        updateStatus(ball.getColor());
-//        return true;
-//
-//    }
 //
 //    private void updateStatus(String color){
 //        if((previousColor.equals(color)  || previousColor.equals(""))){
@@ -57,48 +45,6 @@ public class Bag {
 //        }
 //    }
 //
-//    private boolean isSafeToAdd(Ball ball){
-//        return (getTotalNumberOfBalls() < this.maxSize) && canAdd(ball);
-//    }
-//
-//    private boolean canAdd(Ball ball){
-//        if(!bag.containsKey(ball.getColor())){
-//            bag.put(ball.getColor(),new ArrayList<Ball>());}
-//        if(!(bag.containsKey("green")) && ball.getColor().equals("red")){
-//            return false;}
-//        if(bag.containsKey("red") && bag.get("green").size() > 0 && (bag.get("red").size() > 2*(bag.get("green").size())-2))
-//            return false;
-//        if(maxSize - getTotalNumberOfBalls() < 0)
-//            return false;
-//        if(bag.containsKey("green") && ball.getColor().equals("green") && bag.get("green").size() > 2)
-//           return false;
-//        if(bag.containsKey("yellow") && bag.get("yellow").size() >= getFortyPerscentOfExistingBalls() )
-//            return false;
-//        return true;
-//    }
-//
-//    private int getTotalNumberOfBalls(){
-//        int counter = 0;
-//        for (String s : bag.keySet()) {
-//            counter += bag.get(s).size();
-//        }
-//        return counter;
-//    }
-//
-//    private int getFortyPerscentOfExistingBalls(){
-//        return (int) Math.floor(getTotalNumberOfBalls() * 0.4);
-//    }
-//
-//
-//
-//    public String getSummary(){
-//        status += counter+""+previousColor+"]";
-//        return status;
-//    }
-
-//    public int bagSize(){
-//        return this.maxSize;
-//    }
 
 
 }
